@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{include "hello-k8s.name" .}}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{include "hello-k8s.name" .}}
+  ports:
+    - port: 80
+      targetPort: {{.Values.service.port}}
